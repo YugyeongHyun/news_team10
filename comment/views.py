@@ -14,4 +14,3 @@ class CommentViewSet(viewsets.ModelViewSet):
         else:
             # 그 외에는 최상위 댓글만 반환
             return Comment.objects.filter(parent=None)
-
