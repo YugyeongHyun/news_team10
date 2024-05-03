@@ -6,7 +6,7 @@ class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
         fields = ('title', 'content', 'created_at',
-                  'updated_at',)  # author 포함해야 함
+                  'updated_at',)  # author, url 포함해야 함
 
 
 class ArticleDetailSerializer(ArticleSerializer):

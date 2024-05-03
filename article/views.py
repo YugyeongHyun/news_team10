@@ -17,7 +17,7 @@ class ArticleListAPIView(APIView):
         serializer = ArticleSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):  # raise_exception
             serializer.save()
-            return Response(serializer.data, stauts=status.HTTP_201_CREATED)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 class ArticleDetailAPIView(APIView):
