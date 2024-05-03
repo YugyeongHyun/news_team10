@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from rest_framework.views import APIView
 from article.models import Article
 from article.serializers import ArticleSerializer
@@ -21,5 +21,27 @@ class ArticleListAPIView(APIView):
 
 
 class ArticleDetailAPIView(APIView):
-    # 권한 미제시
     pass
+    # # 권한 미제시
+    # def get_object(self, pk):
+    #     return get_object_or_404(Article, pk=pk)
+
+    # def get(self, request, pk):
+    #     article = self.get_object(pk)
+    #     serializer = ArticleDetailSerializer(article)
+    #     return Response(serializer.data)
+
+    # def put(self, request, pk):
+    #     article = self.get_object(pk)
+    #     serializer = ArticleDetailSerializer(
+    #         article, data=request.data, partial=True)
+    #     if serializer.is_valid(raise_exception=True):
+    #         serializer.save()
+    #         return Response(serializer.data)
+
+    # def delete(self, request, pk):
+    #     article = self.get_object(pk)
+    #     article.delete()
+    #     return Response(status=status.HTTP_204_NO_CONTENT)
+
+# comment로 인해 ArticleDetailSerializer 미구현
