@@ -45,3 +45,15 @@ class UserDetailAPIView(APIView):
         user = get_object_or_404(get_user_model(), username=username)
         serializer = UserSerializer(user)
         return Response(serializer.data)
+    
+    def put(self, request, username):
+        user = get_object_or_404(get_user_model(), username=username)
+        if request.user != user:
+            
+            return Response({"error": "permission denied"}, status=403)
+        
+        serializer = UserSerializer(user, data=request.data, pertial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        
+        return Response(serializer.data)
