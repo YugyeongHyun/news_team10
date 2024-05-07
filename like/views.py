@@ -6,17 +6,22 @@ from .serializers import LIKESerializer
 from rest_framework import status
 from article.serializers import ArticleSerializer
 from rest_framework.exceptions import NotFound
+from rest_framework.permissions import IsAuthenticated
+from comment.models import Comment
+
 
 
 class LIKEAPIView(APIView):
-    def post(self, request, pk):
-        article = get_object_or_404(Article, pk=pk)
-        if article.like_users.filter(pk=request.user.pk).exists():
-            article.like_users.remove(request.user)  # 좋아요 취소
-        else:
-            article.like_users.add(request.user)  # 좋아요
+    permission_classes = [IsAuthenticated]
 
-        serializer = LIKESerializer(article)
+    def post(self, request, pk):
+        comment = get_object_or_404(Comment, pk=pk)
+        if comment.like_users.filter(pk=request.user.pk).exists():
+            comment.like_users.remove(request.user)  # 좋아요 취소
+        else:
+            comment.like_users.add(request.user)  # 좋아요 추가
+
+        serializer = LIKESerializer(comment)
         return Response(serializer.data)
 
 
