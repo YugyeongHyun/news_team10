@@ -7,4 +7,6 @@ from django.db import models
 class Article(models.Model):
     like_users = models.ManyToManyField(
         'auth.User', related_name="like_articles"
+    
+        
     )
