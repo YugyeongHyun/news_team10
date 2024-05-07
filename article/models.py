@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.db import models
-from django.conf import settings
+from account.models import User
 
 
 class Article(models.Model):
@@ -8,7 +8,7 @@ class Article(models.Model):
     content = models. TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    # author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     url = models.URLField(max_length=200, blank=True, null=True)
     like_users = models.ManyToManyField(
-        'auth.User', related_name="like_articles")
+        User, related_name="like_articles")
