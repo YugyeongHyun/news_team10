@@ -25,7 +25,7 @@ class ArticleSerializer(serializers.ModelSerializer):
 
 
 class ArticleDetailSerializer(ArticleSerializer):
-    # comment 추가란
+    # comments = CommentSerializer(many=True, read_only=True)
 
     class Meta:
         model = Article
