@@ -14,14 +14,16 @@ from comment.models import Comment
 class LIKEAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
-    def post(self, request, pk):
-        comment = get_object_or_404(Comment, pk=pk)
-        if comment.like_users.filter(pk=request.user.pk).exists():
-            comment.like_users.remove(request.user)  # 좋아요 취소
-        else:
-            comment.like_users.add(request.user)  # 좋아요 추가
+    def post(self, request, type, pk):
+        model = Article if type == 'article' else Comment
+        instance = get_object_or_404(model, pk=pk)
 
-        serializer = LIKESerializer(comment)
+        if instance.like_users.filter(pk=request.user.pk).exists():
+            instance.like_users.remove(request.user)  # 좋아요 취소
+        else:
+            instance.like_users.add(request.user)  # 좋아요 추가
+
+        serializer = LIKESerializer(instance)
         return Response(serializer.data)
 
 
