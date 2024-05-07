@@ -4,6 +4,8 @@ from article.models import Article
 from article.serializers import ArticleDetailSerializer, ArticleSerializer
 from rest_framework.response import Response
 from rest_framework import status
+from like.serializers import LIKESerializer
+from rest_framework.permissions import IsAuthenticated
 
 
 class ArticleListAPIView(APIView):
@@ -13,7 +15,7 @@ class ArticleListAPIView(APIView):
         return Response(serializer.data)
 
     def post(self, request):
-        # 권한 미제시
+        self.permission_classes = [IsAuthenticated]
         serializer = ArticleSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):  # raise_exception
             serializer.save()
@@ -56,6 +58,7 @@ class ArticleDetailAPIView(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk):
+        self.permission_classes = [IsAuthenticated]
         article = self.get_object(pk)
         serializer = ArticleDetailSerializer(
             article, data=request.data, partial=True)
@@ -64,6 +67,7 @@ class ArticleDetailAPIView(APIView):
             return Response(serializer.data)
 
     def delete(self, request, pk):
+        self.permission_classes = [IsAuthenticated]
         article = self.get_object(pk)
         article.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

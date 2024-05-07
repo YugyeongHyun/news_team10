@@ -11,4 +11,4 @@ class Article(models.Model):
     # author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     url = models.URLField(max_length=200, blank=True, null=True)
     like_users = models.ManyToManyField(
-        'auth.User', related_name="like_articles")
+        settings.AUTH_USER_MODEL, related_name="like_articles")

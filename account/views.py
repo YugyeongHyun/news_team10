@@ -2,11 +2,12 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import get_user_model
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
 from .serializers import UserSerializer
+from rest_framework.permissions import AllowAny 
 
 # Create your views here.
 class SignupAPIView(APIView):
+    permission_classes = [AllowAny]
     def post(self, request):
         data = request.data
         email = data.get("email")
@@ -49,10 +50,9 @@ class UserDetailAPIView(APIView):
     def put(self, request, username):
         user = get_object_or_404(get_user_model(), username=username)
         if request.user != user:
-            
             return Response({"error": "permission denied"}, status=403)
         
-        serializer = UserSerializer(user, data=request.data, pertial=True)
+        serializer = UserSerializer(user, data=request.data, partial=True)  # 오타 수정
         serializer.is_valid(raise_exception=True)
         serializer.save()
         
