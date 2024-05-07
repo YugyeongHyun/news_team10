@@ -4,10 +4,12 @@ from .models import Comment
 class CommentSerializer(serializers.ModelSerializer):
     replies = serializers.SerializerMethodField()
 
-    class Meta:  # Meta 클래스 선언 확인
+    class Meta:
         model = Comment
-        fields = ['id', 'title', 'content', 'created_at', 'updated_at', 'author', 'article', 'parent', 'replies']
+        fields = ['id', 'title', 'content', 'created_at', 'updated_at', 'author', 'parent', 'replies']
 
     def get_replies(self, obj):
-        serializer = CommentSerializer(obj.replies.all(), many=True, context=self.context)
-        return serializer.data
+        # 대댓글은 'replies' 필드를 통해 직렬화
+        if obj.replies.exists():
+            return CommentSerializer(obj.replies.all(), many=True).data
+        return []

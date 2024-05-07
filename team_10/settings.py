@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'comment',
     'article',
     'rest_framework',
-    'django_seed',
 
 ]
 
