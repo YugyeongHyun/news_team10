@@ -22,3 +22,4 @@ urlpatterns = [
     path('likefunction/', include('like.urls'))
     
 ]
+
