@@ -3,7 +3,7 @@ from .models import Comment
 from .serializers import CommentSerializer
 
 class CommentViewSet(viewsets.ModelViewSet):
-    queryset = Comment.objects.all()  # 클래스 레벨에서 queryset 명시
+    queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
     def get_queryset(self):
@@ -12,5 +12,5 @@ class CommentViewSet(viewsets.ModelViewSet):
         if all_comments or self.action in ['retrieve', 'update', 'partial_update', 'destroy']:
             return Comment.objects.all()
         else:
-            # 그 외에는 최상위 댓글만 반환
+            # 최상위 댓글만 반환
             return Comment.objects.filter(parent=None)
