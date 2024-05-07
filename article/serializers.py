@@ -4,10 +4,17 @@ from comment.serializers import CommentSerializer  # comment 앱에서 Serialize
 from comment.models import Comment
 
 class ArticleSerializer(serializers.ModelSerializer):
+    author = serializers.ReadOnlyField(source='author.username')  # 사용자 이름을 반환
+
     class Meta:
         model = Article
-        fields = ('title', 'content', 'created_at', 'updated_at',)
+        fields = ('id', 'title', 'content', 'created_at', 'updated_at', 'author')
+        read_only_fields = ('author',)  # author 필드를 읽기 전용으로 설정
 
+    def create(self, validated_data):
+        # 작성자는 요청을 보낸 사용자로 설정
+        validated_data['author'] = self.context['request'].user
+        return super().create(validated_data)
 class ArticleDetailSerializer(serializers.ModelSerializer):
     comments = serializers.SerializerMethodField()
 

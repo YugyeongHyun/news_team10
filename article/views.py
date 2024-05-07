@@ -9,18 +9,19 @@ from rest_framework.permissions import IsAuthenticated
 
 
 class ArticleListAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get(self, request):
         articles = Article.objects.all()
-        serializer = ArticleSerializer(articles, many=True)  # manu=True
+        serializer = ArticleSerializer(articles, many=True)
         return Response(serializer.data)
 
     def post(self, request):
-        self.permission_classes = [IsAuthenticated]
-        serializer = ArticleSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):  # raise_exception
+        serializer = ArticleSerializer(data=request.data, context={'request': request})
+        if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class LIKEAPIView(APIView):
     def post(self, request, pk):
