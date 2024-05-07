@@ -52,7 +52,7 @@ class UserDetailAPIView(APIView):
             
             return Response({"error": "permission denied"}, status=403)
         
-        serializer = UserSerializer(user, data=request.data, pertial=True)
+        serializer = UserSerializer(user, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         
