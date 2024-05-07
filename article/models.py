@@ -9,3 +9,5 @@ class Article(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     # author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     url = models.URLField(max_length=200, blank=True, null=True)
+    like_users = models.ManyToManyField(
+        'auth.User', related_name="like_articles")
