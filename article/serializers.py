@@ -16,12 +16,11 @@ from .models import Article
 #         return []
 
 class ArticleSerializer(serializers.ModelSerializer):
-    # url = serializers.HyperlinkedIdentityField(view_name='article-detail')
     # author =serializers.ReadOnlyField(source='author.username')
     class Meta:
         model = Article
         fields = ('title', 'content', 'created_at',
-                  'updated_at',)  # author, url 포함해야 함
+                  'updated_at', 'id')  # author, url 포함해야 함
 
 
 class ArticleDetailSerializer(ArticleSerializer):
