@@ -20,6 +20,10 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('article/', include('article.urls')),
+<<<<<<< HEAD
     path('likefunction/', include('like.urls'))
 
+=======
+    path('account/', include('account.urls'))
+>>>>>>> c544be73b89a254f55da93dd3f68d95bff467dea
 ]
