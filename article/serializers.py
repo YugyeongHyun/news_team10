@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Article
+from .models import Article,
 from comment.serializers import CommentSerializer  # comment 앱에서 Serializer 임포트
 from comment.models import Comment
 
