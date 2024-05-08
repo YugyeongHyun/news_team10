@@ -8,7 +8,7 @@ class Article(models.Model):
     content = models. TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    # author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     url = models.URLField(max_length=200, blank=True, null=True)
     like_users = models.ManyToManyField(
         User, related_name="like_articles")
