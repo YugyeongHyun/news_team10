@@ -4,7 +4,7 @@ from account.models import User
 
 
 class Article(models.Model):
-    category = (())
+    category = (('News': 'News'), ('Ask': 'Ask'), ('Show': 'Show'))
     title = models.CharField(max_length=100)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)

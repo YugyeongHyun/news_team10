@@ -10,7 +10,7 @@ class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
         fields = ('id', 'title', 'content',
-                  'created_at', 'updated_at', 'author')
+                  'created_at', 'updated_at', 'author', 'category')
         read_only_fields = ('author',)  # author 필드를 읽기 전용으로 설정
 
     def create(self, validated_data):
