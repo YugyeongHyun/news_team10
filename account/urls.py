@@ -13,5 +13,5 @@ urlpatterns = [
     path("logout/", TokenBlacklistView.as_view(), name="logout"),
     path("token/refresh/", TokenRefreshView.as_view(), name="token_refrsh"),
     path("password/", views.ChangePasswordAPIView.as_view(), name="change_password"),
-    path("detail/<str:username>", views.UserDetailAPIView.as_view(), name="user_detail"),
+    path("detail/<str:username>/", views.UserDetailAPIView.as_view(), name="user_detail"),
 ]
