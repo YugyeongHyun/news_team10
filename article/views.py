@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from rest_framework.views import APIView
-from article.models import Article,
-from article.serializers import ArticleDetailSerializer, ArticleSerializer,
+from article.models import Article
+from article.serializers import ArticleDetailSerializer, ArticleSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from like.serializers import LIKESerializer
