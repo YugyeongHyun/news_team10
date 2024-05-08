@@ -4,6 +4,17 @@ from article.models import Article
 from article.serializers import ArticleDetailSerializer, ArticleSerializer
 from rest_framework.response import Response
 from rest_framework import status
+from like.serializers import LIKESerializer
+from rest_framework.permissions import IsAuthenticated
+
+
+class ArticleListAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        articles = Article.objects.all()
+        serializer = ArticleSerializer(articles, many=True)
+        return Response(serializer.data)
 from rest_framework.pagination import LimitOffsetPagination
 
 class ArticleListAPIView(APIView):
@@ -17,12 +28,11 @@ class ArticleListAPIView(APIView):
         return paginator.get_paginated_response(serializer.data)
 
     def post(self, request):
-        # 권한 미제시
-        serializer = ArticleSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):  # raise_exception
+        serializer = ArticleSerializer(data=request.data, context={'request': request})
+        if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class LIKEAPIView(APIView):
     def post(self, request, pk):
@@ -60,6 +70,7 @@ class ArticleDetailAPIView(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk):
+        self.permission_classes = [IsAuthenticated]
         article = self.get_object(pk)
         serializer = ArticleDetailSerializer(
             article, data=request.data, partial=True)
@@ -68,6 +79,7 @@ class ArticleDetailAPIView(APIView):
             return Response(serializer.data)
 
     def delete(self, request, pk):
+        self.permission_classes = [IsAuthenticated]
         article = self.get_object(pk)
         article.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

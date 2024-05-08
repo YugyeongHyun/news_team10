@@ -5,7 +5,7 @@ from .views import (LIKEAPIView, SearchAPIView)
 
 app_name = "like"
 urlpatterns = [
-    path('<int:pk>/like/', LIKEAPIView.as_view(), name='like'),
+    path('<str:type>/<int:pk>/like/', LIKEAPIView.as_view(), name='like-toggle'),
     path('search/<str:query>/', SearchAPIView.as_view(), name='article-search'),
 ]
 
