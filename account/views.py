@@ -50,10 +50,30 @@ class UserDetailAPIView(APIView):
     def put(self, request, username):
         user = get_object_or_404(get_user_model(), username=username)
         if request.user != user:
-            return Response({"error": "permission denied"}, status=403)
+            return Response({"error": "Permission denied."}, status=403)
         
-        serializer = UserSerializer(user, data=request.data, partial=True)  # 오타 수정
+        serializer = UserSerializer(user, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        
         return Response(serializer.data)
+    
+
+class ChangePasswordAPIView(APIView):
+    
+    def put(self, request):
+            
+            
+        user = request.user
+        password = request.data.get("password")
+        if not password:
+            return Response({"error": "password is required"}, status=400)
+        if len(password) < 8:
+            return Response(
+                {"error": "password must be at least 8 characters"}, status=400
+            ) # 8보다 작다면 다시
+        user.set_password(password)
+        user.save()
+        
+        return Response(status=204)
+    
+    

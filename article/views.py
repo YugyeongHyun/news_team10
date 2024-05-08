@@ -15,6 +15,17 @@ class ArticleListAPIView(APIView):
         articles = Article.objects.all()
         serializer = ArticleSerializer(articles, many=True)
         return Response(serializer.data)
+from rest_framework.pagination import LimitOffsetPagination
+
+class ArticleListAPIView(APIView):
+    pagination_class = LimitOffsetPagination
+    
+    def get(self, request):
+        articles = Article.objects.all()
+        paginator = self.pagination_class()
+        result_page = paginator.paginate_queryset(articles, request)
+        serializer = ArticleSerializer(result_page, many=True)
+        return paginator.get_paginated_response(serializer.data)
 
     def post(self, request):
         serializer = ArticleSerializer(data=request.data, context={'request': request})
