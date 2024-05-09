@@ -39,19 +39,29 @@ Geeknews 구현 프로젝트
   - password
   - password2
   - email
+    - 회원가입 및 회원수정
   - intro
+    - 회원수정
   - gender
+
+**비밀번호 변경**  
+  - password
 
 **회원 탈퇴**
   - user_remove
 
 **좋아요**  
   - like_cnt
+    - 글 like 지수 구현
   - unlike_cnt
+    - 글의 unlike 지수 구현
 
 **글 검색 및 정렬**
   - title
+    - 글 제목 검색
   - pagination
+
+    
 
     
 
