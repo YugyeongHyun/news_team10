@@ -23,7 +23,8 @@ Geeknews 구현 프로젝트
   - created_at : 댓글 생성 시간
   - updated_at : 댓글 수정 시간
   - author : 댓글 작성자
-  - parent : 상위 댓글 _ 대댓글 구현
+  - parent : 상위 댓글
+    - 대댓글 구현
 
 **글 CRUD**  
   - title : 글 제목
@@ -32,7 +33,8 @@ Geeknews 구현 프로젝트
   - updated_at : 글 수정 시간
   - url : 첨부 URL
   - author : 글 작성자
-  - category : 글 카테고리 선택
+  - category : 글 카테고리
+      - 글 작성 시 뉴스, ASK, Show와 같은 카테고리 선택 작성 가능
 
 **회원 기능 구현**  
   - username
@@ -60,8 +62,10 @@ Geeknews 구현 프로젝트
   - title
     - 글 제목 검색
   - pagination
+    - pagesize = 5로 설정하여, 글 정렬
+   
 
-    
+**API 명세**
+<img width="655" alt="image" src="https://github.com/YugyeongHyun/news_team10/assets/160835276/2587da75-2724-42df-bda6-d0cc180a2f52">
 
-    
-
+**ERD 문서**
