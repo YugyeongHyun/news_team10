@@ -24,7 +24,7 @@ Geeknews 구현 프로젝트
   - updated_at : 댓글 수정 시간
   - author : 댓글 작성자
   - parent : 상위 댓글
-    - 대댓글 구현
+      - 대댓글 구현
 
 **글 CRUD**  
   - title : 글 제목
@@ -66,6 +66,7 @@ Geeknews 구현 프로젝트
    
 
 **API 명세**
+
 <img width="655" alt="image" src="https://github.com/YugyeongHyun/news_team10/assets/160835276/2587da75-2724-42df-bda6-d0cc180a2f52">
 
 **ERD 문서**
