@@ -11,7 +11,7 @@ Spartanews_CRUD
 * DB : SQLite
 
 # ✅주요 기능
-**로그인**  📎[Wiki](https://github.com/luna-negra/csi_group_project/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(Login))
+**로그인**  
   * 예시
   * 예시
   * 예시
