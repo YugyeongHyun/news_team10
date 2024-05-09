@@ -6,20 +6,13 @@ from rest_framework.response import Response
 from rest_framework import status
 from like.serializers import LIKESerializer
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.pagination import LimitOffsetPagination
 
 
 class ArticleListAPIView(APIView):
     permission_classes = [IsAuthenticated]
-
-    def get(self, request):
-        articles = Article.objects.all()
-        serializer = ArticleSerializer(articles, many=True)
-        return Response(serializer.data)
-from rest_framework.pagination import LimitOffsetPagination
-
-class ArticleListAPIView(APIView):
     pagination_class = LimitOffsetPagination
-    
+
     def get(self, request):
         articles = Article.objects.all()
         paginator = self.pagination_class()
@@ -28,11 +21,13 @@ class ArticleListAPIView(APIView):
         return paginator.get_paginated_response(serializer.data)
 
     def post(self, request):
-        serializer = ArticleSerializer(data=request.data, context={'request': request})
+        serializer = ArticleSerializer(
+            data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class LIKEAPIView(APIView):
     def post(self, request, pk):
@@ -58,8 +53,6 @@ class SearchAPIView(APIView):
 
 
 class ArticleDetailAPIView(APIView):
-    pass
-    # # 권한 미제시
 
     def get_object(self, pk):
         return get_object_or_404(Article, pk=pk)
@@ -83,5 +76,3 @@ class ArticleDetailAPIView(APIView):
         article = self.get_object(pk)
         article.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-# comment로 인해 ArticleDetailSerializer 미구현
