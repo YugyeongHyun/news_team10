@@ -17,22 +17,22 @@ Geeknews 구현 프로젝트
 * DB : SQLite
 
 # ✅주요 기능
-**댓글 CRUD**  
-  - title 
-  - content
-  - created_at
-  - updated_at
-  - author
-  - parent
+**댓글 CRUD : 댓글 작성, 댓글 수정, 댓글 삭제**  
+  - title : 댓글 제목(번호)
+  - content : 댓글 내용
+  - created_at : 댓글 생성 시간
+  - updated_at : 댓글 수정 시간
+  - author : 댓글 작성자
+  - parent : 상위 댓글 _ 대댓글 구현
 
 **글 CRUD**  
-  - title
-  - content
-  - created_at
-  - updated_at
-  - url
-  - author
-  - category
+  - title : 글 제목
+  - content : 글 내용
+  - created_at : 글 생성 시간
+  - updated_at : 글 수정 시간
+  - url : 첨부 URL
+  - author : 글 작성자
+  - category : 글 카테고리 선택
 
 **회원 기능 구현**  
   - username
