@@ -6,7 +6,7 @@ from .serializers import UserSerializer
 from rest_framework.permissions import AllowAny 
 
 # Create your views here.
-class SignupAPIView(APIView):
+class UserListAPIView(APIView):
     permission_classes = [AllowAny]
     def post(self, request):
         data = request.data
@@ -41,6 +41,17 @@ class SignupAPIView(APIView):
         )
         
         
+
+    def delete(self, request):
+        password = request.data.get("password")
+        if not password:
+            return Response({"error": "password is required"}, status=400)
+        
+        if request.user.check_password(password):
+            return Response({"error": "password is incorrect"}, status=400)
+        
+        request.user.delete()
+        return Response(status=204)
 class UserDetailAPIView(APIView):
     
     def get(self, request, username):
