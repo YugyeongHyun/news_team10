@@ -1,4 +1,4 @@
-# 🔡CSI_Group_Project
+# 🔡Spartanews_CRUD
 Spartanews_CRUD
 # 📝프로젝트 소개
 Spartanews_CRUD
