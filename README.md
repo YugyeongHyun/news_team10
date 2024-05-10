@@ -1,7 +1,7 @@
 # 🔡Spartanews
 
 # 📝프로젝트 소개
-Geeknews 구현 프로젝트
+Geeknews 레퍼런스 삼아 Spartanews 구현 프로젝트
 
 # 📅개발 기간
 * 2024.05.03일 - 2024.05.09일
