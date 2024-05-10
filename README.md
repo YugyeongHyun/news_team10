@@ -16,6 +16,14 @@ Geeknews 레퍼런스 삼아 Spartanews 구현 프로젝트
 * Django-drf
 * DB : SQLite
 
+## API 명세
+
+<img width="655" alt="image" src="https://github.com/YugyeongHyun/news_team10/assets/160835276/2587da75-2724-42df-bda6-d0cc180a2f52">
+
+## ERD 문서
+
+<img width="655" alt="image"  src="https://github.com/YugyeongHyun/news_team10/assets/159987685/db007268-230c-4fd1-b805-b66d2df8f29f">
+
 # ✅주요 기능
 **댓글 CRUD : 댓글 작성, 댓글 수정, 댓글 삭제**  
   - title : 댓글 제목(번호)
@@ -65,10 +73,4 @@ Geeknews 레퍼런스 삼아 Spartanews 구현 프로젝트
     - pagesize = 5로 설정하여, 글 정렬
    
 
-**API 명세**
 
-<img width="655" alt="image" src="https://github.com/YugyeongHyun/news_team10/assets/160835276/2587da75-2724-42df-bda6-d0cc180a2f52">
-
-**ERD 문서**
-
-<img width="655" alt="image"  src="https://github.com/YugyeongHyun/news_team10/assets/159987685/db007268-230c-4fd1-b805-b66d2df8f29f">
