@@ -18,7 +18,7 @@ Geeknews 레퍼런스 삼아 Spartanews 구현 프로젝트
 
 # API 명세
 
-<img width="655" alt="image" src="https://github.com/YugyeongHyun/news_team10/assets/160835276/2587da75-2724-42df-bda6-d0cc180a2f52">
+<img width="655" alt="image" src="https://github.com/YugyeongHyun/news_team10/assets/159987685/198e3f16-7550-4824-97b8-7a64f7f1ff0e">
 
 
 
