@@ -45,15 +45,13 @@ class UserListAPIView(APIView):
         )
 
       
-        
-        
 
     def delete(self, request):
         password = request.data.get("password")
         if not password:
             return Response({"error": "password is required"}, status=400)
         
-        if request.user.check_password(password):
+        if not request.user.check_password(password): #녹화 중 코드 수정
             return Response({"error": "password is incorrect"}, status=400)
         
         request.user.delete()
