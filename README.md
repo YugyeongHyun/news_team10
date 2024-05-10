@@ -7,10 +7,10 @@ Geeknews 구현 프로젝트
 * 2024.05.03일 - 2024.05.09일
   
 ## 👥멤버 구성
-*  박지원 : 댓글 CRUD 구현, 댓글 좋아요 구현
-*  안채연 : 글 좋아요 구현, 글 검색 및 페이지네이션 구현
-*  현유경 : 글 CRUD 구현
-*  홍민서 : 회원 기능(로그인 / 로그아웃 / 회원 가입 / 회원 수정 및 탈퇴)
+*  박지원 : 댓글 CRUD 구현, 댓글 좋아요 구현, 발표
+*  안채연 : 글 좋아요 구현, 글 검색 및 페이지네이션 구현, ERD 작성
+*  현유경 : 글 CRUD 구현, readme 작성
+*  홍민서 : 회원 기능(로그인 / 로그아웃 / 회원 가입 / 회원 수정 및 탈퇴), readme 작성성
   
 ## 🖥️개발 환경
 * Django-drf
@@ -70,6 +70,5 @@ Geeknews 구현 프로젝트
 <img width="655" alt="image" src="https://github.com/YugyeongHyun/news_team10/assets/160835276/2587da75-2724-42df-bda6-d0cc180a2f52">
 
 **ERD 문서**
-
 
 <img width="655" alt="image"  src="https://github.com/YugyeongHyun/news_team10/assets/159987685/db007268-230c-4fd1-b805-b66d2df8f29f">
