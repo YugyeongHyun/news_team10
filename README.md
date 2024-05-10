@@ -12,11 +12,11 @@ Geeknews 레퍼런스 삼아 Spartanews 구현 프로젝트
 *  현유경 : 글 CRUD 구현, readme 작성
 *  홍민서 : 회원 기능(로그인 / 로그아웃 / 회원 가입 / 회원 수정 및 탈퇴), readme 작성성
   
-## 🖥️개발 환경
+# 🖥️개발 환경
 * Django-drf
 * DB : SQLite
 
-## API 명세
+# API 명세
 
 <img width="655" alt="image" src="https://github.com/YugyeongHyun/news_team10/assets/160835276/2587da75-2724-42df-bda6-d0cc180a2f52">
 
